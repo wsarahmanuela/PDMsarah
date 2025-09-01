@@ -2,6 +2,8 @@ package com.example.aula2;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,10 +12,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     TextView  textView;
 
     int contador;
+
+    Button button;
+    EditText editTextMin, getEditTextMax;
+
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +34,22 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        button = findViewById(R.id.button);
+        editTextMin = findViewById(R.id.edMin);
+        getEditTextMax = findViewById(R.id.edMax);
+        tv = findViewById(R.id.tv);
+
+        button.setOnClickListener(v -> {
+            Random random = new Random();
+            int min,max;
+            min=Integer.parseInt(editTextMin.getText().toString());
+            max=Integer.parseInt(getEditTextMax.getText().toString());
+            int delta= max-min;
+
+            int sortiado =random.nextInt(delta);
+            tv.setText(Integer.toString(sortiado));
+        });
+
     }
 
     @Override
