@@ -11,28 +11,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainResultado extends AppCompatActivity {
 
-    EditText editText;
+    EditText edResltado;
     Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        editText=findViewById(R.id.editTextNumero);
-        button=findViewById(R.id.button);
+        setContentView(R.layout.activity_main_resultado);
+        edResltado=findViewById(R.id.main);
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
 
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            Bundle bundle = new Bundle();
-            Double numero = Double.parseDouble(editText.getText().toString());
-            bundle.putBundle("Digite um numero",bundle);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        });
+        Double editText = button.editText();
+
+        edResltado.setText(Double.toHexString(editText));
+
+
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
