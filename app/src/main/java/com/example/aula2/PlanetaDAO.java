@@ -1,10 +1,10 @@
 package com.example.aula2;
 import java.util.ArrayList;
 
-public class PlanetaDao {
+public class PlanetaDAO {
     ArrayList<Planeta> arrayListPlanetas;
 
-    public PlanetaDao(){
+    public PlanetaDAO(){
         arrayListPlanetas = new ArrayList<Planeta>();
 
         arrayListPlanetas.add(new Planeta("Mercurio",R.drawable.mercury));
@@ -16,7 +16,6 @@ public class PlanetaDao {
         arrayListPlanetas.add(new Planeta("Urano",R.drawable.uranus));
         arrayListPlanetas.add(new Planeta("Netuno",R.drawable.neptune));
     }
-
     public ArrayList<Planeta> getPlanetas() {
         return arrayListPlanetas;
     }

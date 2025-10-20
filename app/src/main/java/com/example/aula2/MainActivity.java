@@ -19,29 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> nomes;
     ListView listView;
-    Button button;
-    EditText editText;
+    PlanetaController planetaController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listview);
-        button=findViewById(R.id.button);
-        editText=findViewById(R.id.editText);
-        nomes = new ArrayList<String>(); //Inicializa ArrayList
-        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        planetaController new PlanetaController();
+        PlanetaAdapter adapter = new PlanetaAdapter(this, R.layout.item_lista, planetaController.getPlanetas());
         listView.setAdapter(adapter);
-        button.setOnClickListener(v-> {
-            nomes.add(editText.getText().toString());
-            adapter.notifyDataSetChanged();
-        });
-        listView.setOnItemLongClickListener((parent, view, position, id) -> {
-            nomes.remove(position);
-            adapter.notifyDataSetChanged();
-            return true;
-        });
-
     }
 }
