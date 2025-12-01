@@ -1,5 +1,6 @@
 package com.example.aula2;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.aula2.R;
 
 import java.util.Random;
 
@@ -24,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tv;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tv), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tvResultados), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -37,16 +41,15 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         editTextMin = findViewById(R.id.edMin);
         getEditTextMax = findViewById(R.id.edMax);
-        tv = findViewById(R.id.tv);
+        tv = findViewById(R.id.tvResultados);
 
         button.setOnClickListener(v -> {
             Random random = new Random();
             int min,max;
             min=Integer.parseInt(editTextMin.getText().toString());
             max=Integer.parseInt(getEditTextMax.getText().toString());
-            int delta= max-min;
-
-            int sortiado =random.nextInt(delta);
+            int delta = (max - min) + 1;
+            int sortiado =random.nextInt(delta)+ min;;
             tv.setText(Integer.toString(sortiado));
         });
 
