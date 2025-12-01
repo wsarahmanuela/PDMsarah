@@ -12,7 +12,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
     Button button;
     EditText edPeso, edAltura;
 
@@ -21,19 +20,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        button=findViewById(R.id.button4);
+
+        button=findViewById(R.id.button);
         edPeso=findViewById(R.id.edPeso);
         edAltura=findViewById(R.id.edAltura);
-        button.setOnClickListener( v  -> {
-            Intent i = new Intent(MainActivity.this, MainActivity.class);
+
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, IMCresultado.class);
             Bundle bundle = new Bundle();
+
             Double peso = Double.parseDouble(edPeso.getText().toString());
             Double altura = Double.parseDouble(edAltura.getText().toString());
             bundle.putDouble("peso",peso);
-            bundle.putDouble("altura", altura);
-            i.putExtras(bundle);
-            startActivity(i);
+            bundle.putDouble("altura",altura);
+
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

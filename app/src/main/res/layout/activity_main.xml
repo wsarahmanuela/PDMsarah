@@ -9,44 +9,51 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Calculadora de IMC" />
+        android:text="Calculadora IMC"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peso(kg)" />
+        android:text="Peso(Kg)"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/edPeso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.1"
         android:ems="10"
-        android:hint="x Kg"
-        android:inputType="text" />
+        android:inputType="text"
+        android:text="X(Kg)" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:id="@+id/tvAltura"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Altura" />
+        android:layout_weight="0"
+        android:text="Altura(cm)"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/edAltura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.1"
         android:ems="10"
-        android:hint="Y m"
-        android:inputType="text" />
+        android:inputType="text"
+        android:text="Y(cm)" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
+        android:layout_gravity="center"
         android:text="Calcular" />
 
     <ImageView
