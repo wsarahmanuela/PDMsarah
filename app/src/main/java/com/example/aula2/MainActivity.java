@@ -1,11 +1,11 @@
 package com.example.aula2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,35 +13,33 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> nomes;
-    ListView listView;
-    Button button;
-    EditText editText;
+    // Variáveis principais
+    String[] nomes = new String[] {
+            "Natan", "Sarah", "Anaju",
+            "Maria Clara", "Clara"
+    };
+
+    ListView lv; // ListView onde os nomes vão aparecer
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        listView=findViewById(R.id.listview);
-        button=findViewById(R.id.button);
-        editText=findViewById(R.id.editText);
-        nomes = new ArrayList<String>(); //Inicializa ArrayList
-        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(adapter);
-        button.setOnClickListener(v-> {
-            nomes.add(editText.getText().toString());
-            adapter.notifyDataSetChanged();
-        });
-        listView.setOnItemLongClickListener((parent, view, position, id) -> {
-            nomes.remove(position);
-            adapter.notifyDataSetChanged();
-            return true;
-        });
+        setContentView(R.layout.activity_main); // Carrega o layout da tela principal
 
+        // Recupera a ListView do layout XML e liga a variável lv
+        lv = findViewById(R.id.listview);
+
+        // Criamos o Adapter que vai conectar os nomes ao layout de cada item da lista
+        ArrayAdapter<String> a = new ArrayAdapter(
+                this,
+                R.layout.item_lista, // Layout do item individual da lista
+                R.id.textView, // TextView dentro do layout que vai receber cada nome
+                nomes // Vetor de nomes que será usado como dados
+        );
+
+        // Define o adapter para exibir os nomes na ListView
+        lv.setAdapter(a);
     }
 }
