@@ -2,8 +2,7 @@ package com.example.aula2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,30 +12,29 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainResultado extends AppCompatActivity {
 
-    EditText edResltado;
-    Button button;
+    TextView tvTab, tvResult; // Componentes que mostram o título e o resultado da tabuada
+    String resultado = ""; // Variável que acumula todas as linhas da tabuada
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_resultado);
-        edResltado=findViewById(R.id.main);
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
 
-        Double editText = button.editText();
+        // Recupera o número enviado pela tela anterior
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        int num = b.getInt("num");
 
-        edResltado.setText(Double.toHexString(editText));
+        tvTab = findViewById(R.id.tvTabuada);
+        tvResult = findViewById(R.id.tvResultado);
 
+        tvTab.setText("Tabuada do " + num);
 
-
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Gera a tabuada do número recebido (0 até 10)
+        for (int a = 0; a < 11; a++) {
+            resultado = resultado + a + " x " + num + " = " + (a * num) + "\n";
+            tvResult.setText(resultado);
+        }
     }
 }
