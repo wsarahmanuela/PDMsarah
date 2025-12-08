@@ -32,17 +32,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
         sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        List<Sensor> sensorList = sm.getSensorList(Sensor.TYPE_ALL);
-        ArrayList<String> listNameSensor = new ArrayList<>();
+        List<Sensor> sensorList = sm.getSensorList(Sensor.TYPE_ALL);//gerenciador
+        ArrayList<String> listNameSensor = new ArrayList<>();//dados, cria uma array cada sensor
         for (Sensor s: sensorList) {
             listNameSensor.add(s.getName());
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listNameSensor);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listNameSensor);//list a
         listView.setAdapter(adapter);
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {
+    public void onSensorChanged(SensorEvent event) {//vcalor
         event.sensor.getName();
         textView.setText(Float.toString(event.values[0]));
     }
