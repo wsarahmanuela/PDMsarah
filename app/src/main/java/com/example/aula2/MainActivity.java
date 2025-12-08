@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listview);
-        planetaController new PlanetaController();
+        planetaController= new PlanetaController();
         PlanetaAdapter adapter = new PlanetaAdapter(this, R.layout.item_lista, planetaController.getPlanetas());
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);///colocando o adapter dentro da lista
     }
 }
