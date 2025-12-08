@@ -26,9 +26,9 @@ public class IMCresultado extends AppCompatActivity {
         tvResultado=findViewById(R.id.tvResultado);
         imageView=findViewById(R.id.imageView2);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        Double peso = bundle.getDouble("peso");
+        Intent intent = getIntent();//recebendo
+        Bundle bundle = intent.getExtras();//extraindo os valores
+        Double peso = bundle.getDouble("peso");//recuperando o peso
         Double altura = bundle.getDouble("altura");
 
         Double imc = peso/(altura*altura);

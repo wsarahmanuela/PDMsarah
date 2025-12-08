@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        button=findViewById(R.id.button);
+        button=findViewById(R.id.button);//link para xml
         edPeso=findViewById(R.id.edPeso);
         edAltura=findViewById(R.id.edAltura);
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
             Double peso = Double.parseDouble(edPeso.getText().toString());
             Double altura = Double.parseDouble(edAltura.getText().toString());
-            bundle.putDouble("peso",peso);
+            bundle.putDouble("peso",peso);//dentro do bundle
             bundle.putDouble("altura",altura);
 
             intent.putExtras(bundle);
