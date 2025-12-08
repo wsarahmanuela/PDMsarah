@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             min=Integer.parseInt(editTextMin.getText().toString());
             max=Integer.parseInt(getEditTextMax.getText().toString());
             int delta = (max - min) + 1;
-            int sortiado =random.nextInt(delta)+ min;;
+            int sortiado =random.nextInt(delta)+ min;// gera num entre min e max
             tv.setText(Integer.toString(sortiado));
         });
 
